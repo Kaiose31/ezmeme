@@ -10,5 +10,8 @@ Just run the script and it will make( try to make ) a meme to roast you.
 pip install -r requirements.txt
 ```
 
+# TODO
+1. Dataset integration
+2. USB SAVE
 
 

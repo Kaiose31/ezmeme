@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 # TODO
-1. Dataset integration
-2. USB SAVE
+1. USB SAVE
+2. Match meme and text.
 
 

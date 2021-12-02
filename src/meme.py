@@ -2,6 +2,13 @@ import requests
 from PIL import Image
 from io import BytesIO
 import random
+import pandas as pd
+
+def get_insults():
+    df = pd.read_csv('../data/impermium_verification_labels.csv')
+    df.Comment.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True)
+    return df.loc[df['Insult']==1]['Comment']
+
 def get_temps():
     temp = r"https://api.memegen.link/templates/"
     r = requests.get(temp)
@@ -14,7 +21,7 @@ def get_temps():
 # MEME API 
 def get_meme():
     temp = random.choice(get_temps())
-    text = "DUMDUM"
+    text = random.choice(get_insults().values.tolist())
     url = f"https://api.memegen.link/images/{temp}/{text}.png"
     r  =  requests.get(url)
     if r.status_code !=200:
@@ -27,3 +34,4 @@ def get_meme():
                     
 if __name__ == '__main__':
     get_meme()
+    
